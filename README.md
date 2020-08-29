@@ -1,7 +1,5 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich"]:end -->
 
-# Run `init.py`
-
 # new_release
 
 📦 go package to check for a new GitHub release
@@ -16,8 +14,8 @@
 Before contributing please read the [CONTRIBUTING.md file](https://github.com/Matt-Gleich/new_release/blob/master/CONTRIBUTING.md)
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
 
