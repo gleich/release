@@ -1,25 +1,36 @@
 package new_release
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 )
 
 // Check for an update. Takes in the current version and GitHub repo URL.
-// Returns true or false if there is an update or not. Will return false if
-// there is no network connection
-func Check(currentVersion string, repoURL string) (bool, error) {
+// Returns true or false if there is an update or not as well as the version
+// value. Will return false if there is no network connection.
+func Check(currentVersion string, repoURL string) (bool, string, error) {
 	hasConnection := checkConnection()
 	if !hasConnection {
-		return false, nil
+		return false, "", nil
 	}
-	return true, nil
+	requestURL := convertURL(repoURL)
+	version, err := getVersion(requestURL)
+	if err != nil {
+		return false, "", err
+	}
+	if version != currentVersion {
+		return true, "", nil
+	}
+	return false, "", nil
 }
 
 // Check for a network connection
 func checkConnection() bool {
 	resp, err := http.Get("http://clients3.google.com/generate_204")
-	if err != nil || resp.StatusCode != 200 && resp.StatusCode != 204 {
+	if err != nil || resp.StatusCode != 204 {
 		return false
 	}
 	return true
@@ -37,4 +48,24 @@ func convertURL(repoURL string) string {
 		fixedURL = fixedURL + "/releases/latest"
 	}
 	return fixedURL
+}
+
+// Make the actual get request to get the version
+func getVersion(requestURL string) (string, error) {
+	resp, err := http.Get(requestURL)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	var data map[string]interface{}
+	err = json.NewDecoder(resp.Body).Decode(&data)
+	if err != nil {
+		return "", err
+	}
+	version := fmt.Sprintf("%v", data["tag_name"])
+	if version == "" {
+		return "", errors.New("Version number for repo is blank")
+	}
+	return version, nil
 }

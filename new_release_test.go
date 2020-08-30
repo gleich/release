@@ -1,6 +1,7 @@
 package new_release
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/tj/assert"
@@ -17,4 +18,25 @@ func TestConvertURL(t *testing.T) {
 
 	instance2 := convertURL("https://github.com/repos/Matt-Gleich/nuke/")
 	assert.Equal(t, "https://api.github.com/repos/Matt-Gleich/nuke/releases/latest", instance2)
+}
+
+func TestGetVersion(t *testing.T) {
+	instance, err := getVersion("https://api.github.com/repos/Matt-Gleich/nuke/releases/latest")
+	checkTestingErr(t, err)
+	if instance[:1] != "v" || !strings.Contains(instance, ".") {
+		t.Error("instance looks like this:", instance)
+	}
+}
+
+func TestCheck(t *testing.T) {
+	instance, _, err := Check("v1.0.0", "https://github.com/repos/Matt-Gleich/nuke/")
+	checkTestingErr(t, err)
+	assert.True(t, instance)
+}
+
+// Check for a error in one line
+func checkTestingErr(t *testing.T, err error) {
+	if err != nil {
+		t.Error(err)
+	}
 }
