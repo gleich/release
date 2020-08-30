@@ -32,11 +32,7 @@ Check for an update. Takes in the current version and GitHub repo URL. Returns t
 ```go
 package main
 
-import (
-    "github.com/Matt-Gleich/new_release"
-
-    "fmt"
-)
+import "github.com/Matt-Gleich/new_release"
 
 func main() {
     isOutdated, version, err := new_release.Check("v1.0.0", "https://github.com/repos/Matt-Gleich/nuke/")
