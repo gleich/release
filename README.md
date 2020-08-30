@@ -39,7 +39,7 @@ import (
 )
 
 func main() {
-    isOutdated, version, err := Check("v1.0.0", "https://github.com/repos/Matt-Gleich/nuke/")
+    isOutdated, version, err := new_release.Check("v1.0.0", "https://github.com/repos/Matt-Gleich/nuke/")
 }
 ```
 
