@@ -13,10 +13,10 @@ func TestCheckConnection(t *testing.T) {
 }
 
 func TestConvertURL(t *testing.T) {
-	instance1 := convertURL("https://github.com/repos/Matt-Gleich/nuke")
+	instance1 := convertURL("https://github.com/Matt-Gleich/nuke")
 	assert.Equal(t, "https://api.github.com/repos/Matt-Gleich/nuke/releases/latest", instance1)
 
-	instance2 := convertURL("https://github.com/repos/Matt-Gleich/nuke/")
+	instance2 := convertURL("https://github.com/Matt-Gleich/nuke/")
 	assert.Equal(t, "https://api.github.com/repos/Matt-Gleich/nuke/releases/latest", instance2)
 }
 
@@ -29,9 +29,12 @@ func TestGetVersion(t *testing.T) {
 }
 
 func TestCheck(t *testing.T) {
-	instance, _, err := Check("v1.0.0", "https://github.com/repos/Matt-Gleich/nuke/")
+	instance, version, err := Check("v1.0.0", "https://github.com/Matt-Gleich/nuke")
 	checkTestingErr(t, err)
 	assert.True(t, instance)
+	if version[:1] != "v" || !strings.Contains(version, ".") {
+		t.Error("instance looks like this:", version)
+	}
 }
 
 // Check for a error in one line
