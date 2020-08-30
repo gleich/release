@@ -11,20 +11,20 @@ import (
 // Check for an update. Takes in the current version and GitHub repo URL.
 // Returns true or false if there is an update or not as well as the version
 // value. Will return false if there is no network connection.
-func Check(currentVersion string, repoURL string) (bool, string, error) {
+func Check(localVersion string, repoURL string) (bool, string, error) {
 	hasConnection := checkConnection()
 	if !hasConnection {
 		return false, "", nil
 	}
 	requestURL := convertURL(repoURL)
-	version, err := getVersion(requestURL)
+	currentVersion, err := getVersion(requestURL)
 	if err != nil {
 		return false, "", err
 	}
-	if version != currentVersion {
-		return true, "", nil
+	if localVersion != currentVersion {
+		return true, currentVersion, nil
 	}
-	return false, "", nil
+	return false, currentVersion, nil
 }
 
 // Check for a network connection
