@@ -67,5 +67,8 @@ func getVersion(requestURL string) (string, error) {
 	if version == "" {
 		return "", errors.New("Version number for repo is blank")
 	}
+	if version == "<nil>" {
+		return "", errors.New("Latest release not found for given repo URL")
+	}
 	return version, nil
 }
