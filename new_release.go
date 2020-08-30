@@ -2,6 +2,7 @@ package new_release
 
 import (
 	"net/http"
+	"strings"
 )
 
 // Check for an update. Takes in the current version and GitHub repo URL.
@@ -22,4 +23,18 @@ func checkConnection() bool {
 		return false
 	}
 	return true
+}
+
+// Convert repo url to api url
+// From: https://github.com/repos/Matt-Gleich/nuke
+// To:   https://api.github.com/repos/Matt-Gleich/nuke/releases/latest
+func convertURL(repoURL string) string {
+	var fixedURL string
+	fixedURL = strings.Replace(repoURL, "https://github.com", "https://api.github.com", 1)
+	if fixedURL[len(fixedURL)-1:] == "/" {
+		fixedURL = fixedURL + "releases/latest"
+	} else {
+		fixedURL = fixedURL + "/releases/latest"
+	}
+	return fixedURL
 }
