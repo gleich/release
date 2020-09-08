@@ -23,7 +23,7 @@ func TestConvertURL(t *testing.T) {
 
 func TestGetVersion(t *testing.T) {
 	instance, err := getVersion("https://api.github.com/repos/Matt-Gleich/nuke/releases/latest")
-	checkTestingErr(t, err)
+	assert.Nil(t, err)
 	if instance[:1] != "v" || !strings.Contains(instance, ".") {
 		t.Error("instance looks like this:", instance)
 	}
@@ -31,7 +31,7 @@ func TestGetVersion(t *testing.T) {
 
 func TestCheck(t *testing.T) {
 	successInstance, successVersion, successErr := Check("v1.0.0", "https://github.com/Matt-Gleich/nuke")
-	checkTestingErr(t, successErr)
+	assert.Nil(t, successErr)
 	assert.True(t, successInstance)
 	if successVersion[:1] != "v" || !strings.Contains(successVersion, ".") {
 		t.Error("instance looks like this:", successVersion)
@@ -41,11 +41,4 @@ func TestCheck(t *testing.T) {
 	assert.False(t, failedInstance)
 	assert.Equal(t, "", failedVersion)
 	assert.Equal(t, errors.New("Latest release not found for given repo URL"), failedErr)
-}
-
-// Check for a error in one line
-func checkTestingErr(t *testing.T, err error) {
-	if err != nil {
-		t.Error(err)
-	}
 }
