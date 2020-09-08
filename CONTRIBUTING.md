@@ -1,6 +1,6 @@
 # Contributing
 
-👋 Welcome to new_release! Thank you for showing interest in contributing to new_release, we would love to have your contribution. Below are some details on how to contribute to new_release. Please read carefully!
+👋 Welcome to release! Thank you for showing interest in contributing to release, we would love to have your contribution. Below are some details on how to contribute to release. Please read carefully!
 
 ## 🐛 Requesting Features/Reporting Bugs
 

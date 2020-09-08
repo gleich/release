@@ -1,4 +1,4 @@
-package new_release
+package release
 
 import (
 	"encoding/json"

@@ -23,5 +23,5 @@ This PR resolves #22
 -->
 
 <!--
-Thank you for your contribution to new_release!
+Thank you for your contribution to release!
 -->

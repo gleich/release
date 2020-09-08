@@ -1,4 +1,4 @@
-module github.com/Matt-Gleich/new_release
+module github.com/Matt-Gleich/release
 
 go 1.15
 

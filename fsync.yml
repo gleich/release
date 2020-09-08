@@ -1,7 +1,7 @@
 commit_message: 🔄 Update file via sync
 replace:
   - before: project_name
-    after: new_release
+    after: release
   - before: project_description
     after: 📦 go package to check for a new GitHub release
   - before: github_username

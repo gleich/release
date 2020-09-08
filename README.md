@@ -1,23 +1,23 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich"]:end -->
 
-# new_release
+# release
 
 📦 go package to check for a new GitHub release
 
-![build](https://github.com/Matt-Gleich/new_release/workflows/build/badge.svg)
-![test](https://github.com/Matt-Gleich/new_release/workflows/test/badge.svg)
-![lint](https://github.com/Matt-Gleich/new_release/workflows/lint/badge.svg)
-![release](https://github.com/Matt-Gleich/new_release/workflows/release/badge.svg)
+![build](https://github.com/Matt-Gleich/release/workflows/build/badge.svg)
+![test](https://github.com/Matt-Gleich/release/workflows/test/badge.svg)
+![lint](https://github.com/Matt-Gleich/release/workflows/lint/badge.svg)
+![release](https://github.com/Matt-Gleich/release/workflows/release/badge.svg)
 
 ## 🚀 Install
 
 Simply run the following in the root of your project directory:
 
 ```txt
-go get -u github.com/Matt-Gleich/new_release
+go get -u github.com/Matt-Gleich/release
 ```
 
-## 📄 Documentation [![GoDoc](https://godoc.org/github.com/Matt-Gleich/new_release?status.svg)](https://godoc.org/github.com/Matt-Gleich/new_release)
+## 📄 Documentation [![GoDoc](https://godoc.org/github.com/Matt-Gleich/release?status.svg)](https://godoc.org/github.com/Matt-Gleich/release)
 
 ### `func Check`
 
@@ -32,16 +32,16 @@ Check for an update. Takes in the current version and GitHub repo URL. Returns t
 ```go
 package main
 
-import "github.com/Matt-Gleich/new_release"
+import "github.com/Matt-Gleich/release"
 
 func main() {
-    isOutdated, version, err := new_release.Check("v1.0.0", "https://github.com/Matt-Gleich/nuke/")
+    isOutdated, version, err := release.Check("v1.0.0", "https://github.com/Matt-Gleich/nuke/")
 }
 ```
 
 ## 🙌 Contributing
 
-Before contributing please read the [CONTRIBUTING.md file](https://github.com/Matt-Gleich/new_release/blob/master/CONTRIBUTING.md)
+Before contributing please read the [CONTRIBUTING.md file](https://github.com/Matt-Gleich/release/blob/master/CONTRIBUTING.md)
 
 <!-- DO NOT REMOVE - contributor_list:start -->
 
