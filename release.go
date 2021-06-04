@@ -37,8 +37,8 @@ func checkConnection() bool {
 }
 
 // Convert repo url to api url
-// From: https://github.com/Matt-Gleich/nuke
-// To:   https://api.github.com/repos/Matt-Gleich/nuke/releases/latest
+// From: https://github.com/gleich/nuke
+// To:   https://api.github.com/repos/gleich/nuke/releases/latest
 func convertURL(repoURL string) string {
 	var fixedURL string
 	fixedURL = strings.Replace(repoURL, "https://github.com/", "https://api.github.com/repos/", 1)
